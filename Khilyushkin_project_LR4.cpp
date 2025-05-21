@@ -55,6 +55,24 @@ int calculateDaysToNextYear(int currentDay,int currentMonth,int currentYear){
     }
 
     return days;
+int daysInMonth(int month, int year) {
+
+  if (month < 1 || month > 12) {
+
+    return 0; // Неверный месяц
+
+  }
+  int days[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+  if (month == 2 && isLeapYear(year)) {
+    return 29;
+  }
+  return days[month];
+}
+
+
+
+bool isLeapYear(int year) {
+  return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
 
