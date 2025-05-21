@@ -29,6 +29,7 @@ bool UserInput(string input) {
     return true;
 }
 
+
 string calculateNewDate(int currentDay,int currentMonth,int currentYear, int daysToAdd) {
     string Actual = "";
     while (daysToAdd > 0) {
@@ -51,6 +52,55 @@ string calculateNewDate(int currentDay,int currentMonth,int currentYear, int day
     Actual = to_string(currentDay)+' '+to_string(currentMonth)+' '+to_string(currentYear);
     return Actual;
 }
+
+
+void EnterDigit(int& varLink, const string& label) {
+    string raw_input;
+    cout << label << " = ";
+    getline(cin, raw_input);
+
+    while (!UserInput(raw_input)) {
+        cout << label << " = ";
+        getline(cin, raw_input);
+    }
+    varLink = stoi(raw_input);
+}
+
+
+int calculateDaysToNextYear(int currentDay,int currentMonth,int currentYear){
+    int days = 0;
+    int nextYear = currentYear + 1;
+    for (int m = currentMonth; m <= 12; ++m) {
+        int daysInCurrentMonth = daysInMonth(m, currentYear);
+        if (m == currentMonth) {
+            days += (daysInCurrentMonth - currentDay + 1);
+        } else {
+            days += daysInCurrentMonth;
+        }
+    }
+
+    return days;
+}
+int daysInMonth(int month, int year) {
+
+  if (month < 1 || month > 12) {
+
+    return 0; // Неверный месяц
+
+  }
+  int days[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+  if (month == 2 && isLeapYear(year)) {
+    return 29;
+  }
+  return days[month];
+}
+
+
+
+bool isLeapYear(int year) {
+  return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
 
 int day(){
     cout << "Введите текущий день: ";
