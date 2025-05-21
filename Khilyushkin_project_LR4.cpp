@@ -41,7 +41,6 @@ void EnterDigit(int& varLink, const string& label) {
     varLink = stoi(raw_input);
 }
 
-<<<<<<< HEAD
 
 int daysInMonth(int month, int year) {
 
@@ -58,14 +57,12 @@ int daysInMonth(int month, int year) {
 }
 
 
-=======
+
 bool isLeapYear(int year) {
   return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
 
-
->>>>>>> 9ca7e2b3c759b7b9b2edac7d4ac8deba6d4b5311
 int day(){
     cout << "Введите текущий день: ";
     int currentDay;
