@@ -42,6 +42,19 @@ void EnterDigit(int& varLink, const string& label) {
 }
 
 
+int calculateDaysToNextYear(int currentDay,int currentMonth,int currentYear){
+    int days = 0;
+    int nextYear = currentYear + 1;
+    for (int m = currentMonth; m <= 12; ++m) {
+        int daysInCurrentMonth = daysInMonth(m, currentYear);
+        if (m == currentMonth) {
+            days += (daysInCurrentMonth - currentDay + 1);
+        } else {
+            days += daysInCurrentMonth;
+        }
+    }
+
+    return days;
 int daysInMonth(int month, int year) {
 
   if (month < 1 || month > 12) {
