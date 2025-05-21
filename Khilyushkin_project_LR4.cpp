@@ -29,6 +29,31 @@ bool UserInput(string input) {
     return true;
 }
 
+
+string calculateNewDate(int currentDay,int currentMonth,int currentYear, int daysToAdd) {
+    string Actual = "";
+    while (daysToAdd > 0) {
+        int daysInCurrentMonth = daysInMonth(currentMonth, currentYear);
+        int daysRemainingInMonth = daysInCurrentMonth - currentDay + 1;
+
+        if (daysToAdd >= daysRemainingInMonth) {
+            daysToAdd -= daysRemainingInMonth;
+            currentDay = 1;  // Переходим к первому дню следующего месяца
+            currentMonth++;
+            if (currentMonth > 12) {
+                currentMonth = 1;
+                currentYear++;
+            }
+        } else {
+            currentDay += daysToAdd;
+            daysToAdd = 0;
+        }
+    }
+    Actual = to_string(currentDay)+' '+to_string(currentMonth)+' '+to_string(currentYear);
+    return Actual;
+}
+
+
 void EnterDigit(int& varLink, const string& label) {
     string raw_input;
     cout << label << " = ";
@@ -55,6 +80,7 @@ int calculateDaysToNextYear(int currentDay,int currentMonth,int currentYear){
     }
 
     return days;
+}
 int daysInMonth(int month, int year) {
 
   if (month < 1 || month > 12) {
